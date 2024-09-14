@@ -1,31 +1,72 @@
-import "./App.css";
-import Game from "./components/Game";
-import Home from "./components/Home";
-import Leaderboard from "./components/Leaderboard";
-import Login from "./components/Login";
-import { Routes, Route } from "react-router-dom";
-import Signup from "./components/Signup";
-import Profile from "./components/Profile";
-import { ProtectRoutes } from "./Hooks/protectRoutes";
-import AlertProvider from "react-alert-async";
-import "react-alert-async/dist/index.css";
+import React from 'react'
+import logo from "./logo.jpeg"
+import { Link } from 'react-router-dom'
+import { useAuth } from '../Hooks/auth'
 
-function App() {
+const Navbar = ({username}) => {
+    const path = window.location.pathname
+    const { logout } = useAuth();
+
+    const handleLogOut = async (e) => {
+        e.preventDefault();
+        try {
+          logout();
+        } catch (err) {
+          console.log(err);
+        }
+      };
   return (
     <>
-      <AlertProvider />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route element={<ProtectRoutes />}>
-          <Route path="/hangman" element={<Game />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/profile" element={<Profile />} />
-        </Route>
-      </Routes>
+    <nav className="">
+        <div className='logoBox'>
+            <Link to="/hangman" className="logo">
+                <img className="logo_img" src={logo} alt="" />
+            </Link>
+            <Link to={"/hangman"} className="logoText">
+            HANGMAN
+            </Link>
+        </div>
+        <p className="navText">{path === '/leaderboard' ? "LeaderBoard" : path === "/profile" ? "Profile" : "Guess a Famous Personality"}</p>
+        <div className="btnGroup">
+            <div className='usertext'>{username}</div>
+            <Link
+            to={"/profile"}
+            className="logoutBtn"
+            title="Profile"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="Profile"
+            >
+            <i class="fa-regular fa-user"></i>
+            </Link>
+            <Link 
+            to={"/leaderboard"}
+            className="logoutBtn"
+            title="Leaderboard"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="Leaderboard"
+            >
+            <i class="fa-solid fa-table-columns"></i>
+            </Link>
+            
+            <div
+            className="logoutBtn"
+            title="Logout"
+            onClick={handleLogOut}
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="Logout"
+            >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </div>
+        </div>
+      </nav>
     </>
-  );
+  )
 }
 
-export default App;
+export default Navbar
