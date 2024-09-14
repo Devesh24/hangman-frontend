@@ -5,8 +5,7 @@ function Home() {
       window.location.pathname = "/login"
     },[])
   return (
-    <>
-    </>
+    <></>
   );
 }
 

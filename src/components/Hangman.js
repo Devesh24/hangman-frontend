@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Hangman({wrongGuess, word, guessedLetters, score, hint}) {
   
-  //for popover
+  //code snippet for bootstrap popover - used in hint
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

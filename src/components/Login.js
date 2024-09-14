@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { BASE_URL } from "../config";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import Loader from "./Loader";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -36,7 +37,9 @@ const Login = () => {
   };
 
   return (
-    <div className="register_user_main_cont">
+    <>
+    {loading ? <Loader /> :
+      <div className="register_user_main_cont">
       <form onSubmit={handleSubmit} className="form loginForm">
         <h1>LOGIN</h1>
         <div className="row">
@@ -83,7 +86,8 @@ const Login = () => {
           </div>
         </div>
       </form>
-    </div>
+    </div>}
+    </>
   );
 };
 

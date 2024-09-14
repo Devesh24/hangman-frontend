@@ -515,62 +515,10 @@ ul li a {
   gap: 0.5rem;
 }
 
-
-
-
-@media only screen and (max-width: 600px) {
-  .gameOver{
-    width: 90vw;
-  }
-  .alert{
-    font-size: 1.5em;
-  }
-  .blank, .blankHead, .score{
-    display: none;
-  }
-  .keyboard{
-    width: 100vw;
-    gap: 0;
-    grid-template-columns: auto auto auto auto auto auto auto;
-    height: 30vh;
-  }
-  .key{
-    font-size: 1em;
-    border-radius: 0.5rem;
-  }
-  .hangman{
-    border-radius: 0;
-  }
-  .hangblankHead, .mobileIcon, .hangWord{
-    display: flex;
-  }
-}
-
-@media only screen and (max-width: 790px) and (min-width: 601px) {
-  .gameOver{
-    width: 80vw;
-  }
-  .keyboard{
-    width: 40vw;
-    grid-template-columns: auto auto auto auto;
-  }
-  .key{
-    font-size: 1em;
-  }
-  .blank, .blankHead{
-    width: 40vw;
-    font-size: 1.5rem;
-  }
-}
-
-@media only screen and (max-height: 480px){
-  .keyboard{
-    height: 90vh;
-  }
-  .gameOver{
-    height: 60vh;
-  }
-  .alert{
-    font-size: 1.5em;
-  }
+.loader{
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

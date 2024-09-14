@@ -7,10 +7,13 @@ import { Routes, Route } from "react-router-dom";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import { ProtectRoutes } from "./Hooks/protectRoutes";
+import AlertProvider from "react-alert-async";
+import "react-alert-async/dist/index.css";
 
 function App() {
   return (
     <>
+      <AlertProvider />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
