@@ -2,7 +2,6 @@ import React from 'react'
 import logo from "./logo.jpeg"
 import { Link } from 'react-router-dom'
 import { useAuth } from '../Hooks/auth'
-import { confirm } from 'react-alert-async'
 
 const Navbar = ({username}) => {
     const path = window.location.pathname
@@ -11,17 +10,7 @@ const Navbar = ({username}) => {
     const handleLogOut = async (e) => {
         e.preventDefault();
         try {
-          const conf = await confirm(
-            "Are you sure you want to Logout?",
-            {
-              okLabel: "Yes",
-              cancelLabel: "No",
-            }
-          );
-    
-          if (conf) {
-            logout();
-          }
+          logout();
         } catch (err) {
           console.log(err);
         }
